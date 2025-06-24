@@ -1,4 +1,4 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './donationHome.css';
 import { motion } from 'framer-motion';
 
@@ -8,6 +8,8 @@ import slide2 from './photos/dawg2.png';
 import slide3 from './photos/dawg3.png';
 import slide4 from './photos/dawg4.png';
 import slide5 from './photos/dawg5.png';
+
+const navigate = useNavigate();
 
 export default function DonationHome() {
   return (
@@ -52,7 +54,7 @@ export default function DonationHome() {
           className="donate-btn"
           whileHover={{ scale: 1.1 }}
           transition={{ type: 'tween', stiffness: 500, duration: 0.1 }}  
-          onClick={() => (window.location.href = '/donate')}
+          onClick={() => navigate('/donate')}
         >
             Donate Now 🐶
         </motion.button>
