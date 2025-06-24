@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/helpinghand/static/css/main.372052c1.css",
+    "main.js": "/helpinghand/static/js/main.a34c0665.js",
+    "static/js/453.2caab537.chunk.js": "/helpinghand/static/js/453.2caab537.chunk.js",
+    "static/media/dawg2.png": "/helpinghand/static/media/dawg2.ebfba640d4ecafec7625.png",
+    "static/media/dawg5.png": "/helpinghand/static/media/dawg5.9f011dbb80226261b3f1.png",
+    "static/media/dawg1.png": "/helpinghand/static/media/dawg1.8248ea38a7752c4cd4a7.png",
+    "static/media/dawg4.png": "/helpinghand/static/media/dawg4.7e0492f0d5c3c0019543.png",
+    "static/media/dawg3.png": "/helpinghand/static/media/dawg3.2c65899851fb53a7817c.png",
+    "index.html": "/helpinghand/index.html",
+    "main.372052c1.css.map": "/helpinghand/static/css/main.372052c1.css.map",
+    "main.a34c0665.js.map": "/helpinghand/static/js/main.a34c0665.js.map",
+    "453.2caab537.chunk.js.map": "/helpinghand/static/js/453.2caab537.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.372052c1.css",
+    "static/js/main.a34c0665.js"
+  ]
+}
