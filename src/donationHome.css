@@ -1,0 +1,108 @@
+/* DonationHome.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.donation-home {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  width: 500%; /* 5 images * 100% each */
+  height: 100vh;
+  animation: scroll 25s linear infinite;
+}
+
+.carousel-slide {
+  flex: 0 0 20%; /* each slide takes 1/5th width */
+  height: 100vh;
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover the entire slide area */
+  display: block;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-80%);
+  }
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.donate-btn {
+  background: #ff7f50;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 127, 80, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.donate-btn:hover {
+  background: #ff6333;
+  box-shadow: 0 0 25px rgba(255, 127, 80, 0.8);
+}
+
+.facts {
+  margin-top: 2rem;
+}
+
+.facts ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.facts li {
+  margin-bottom: 0.5rem;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

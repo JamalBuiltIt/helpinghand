@@ -1,0 +1,53 @@
+.donateContainer {
+  position: absolute; /* or 'fixed' for persistent center on scroll */
+  top: 50%;
+  left: 50%;
+  max-width: 450px;
+  padding: 2rem;
+  background: #fffaf5;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: fadeSlideIn 1.5s ease-in-out forwards;
+}
+
+.carousel {
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -70%);
+  }
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* match your carousel height */
+  overflow: hidden;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Similar gradient from your home component */
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+  pointer-events: none; /* so overlay doesn't block clicks */
+}
+
+
