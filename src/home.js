@@ -9,9 +9,8 @@ import slide3 from './photos/dawg3.png';
 import slide4 from './photos/dawg4.png';
 import slide5 from './photos/dawg5.png';
 
-const navigate = useNavigate();
-
 export default function DonationHome() {
+  const navigate = useNavigate();
   return (
     <div className="donation-home">
       <div className="carousel">
