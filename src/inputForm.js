@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import "./inputForm.css";
 
 import slide1 from './photos/dawg1.png';
@@ -9,16 +8,6 @@ import slide5 from './photos/dawg5.png';
 
 export default function CashAppDonation() {
   const cashtag = 'KeefyDee';
-  const [amount, setAmount] = useState('');
-
-  const handleDonateClick = () => {
-    if (!amount || isNaN(amount) || Number(amount) <= 0) {
-      alert('Please enter a valid donation amount');
-      return;
-    }
-    const formattedAmount = parseFloat(amount).toFixed(2);
-    window.open(`https://cash.app/$${cashtag}?amount=${formattedAmount}`, '_blank', 'noopener,noreferrer');
-  };
 
   return (
     <>
@@ -54,24 +43,10 @@ export default function CashAppDonation() {
           rel="noopener noreferrer"
           style={styles.button}
         >
-          QR Code
+          Click Here
         </a>
 
-        <div style={{ marginTop: '2rem' }}>
-          <label style={{ fontWeight: '600' }}>Or enter donation amount:</label>
-          <input
-            type="number"
-            min="1"
-            step="any"
-            placeholder="Amount in $"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            style={styles.input}
-          />
-          <button onClick={handleDonateClick} style={{ ...styles.button, marginTop: '0.5rem' }}>
-            Donate ${amount || ''}
-          </button>
-        </div>
+        
       </div>
     </>
   );
