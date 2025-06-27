@@ -8,7 +8,7 @@ import slide4 from './photos/dawg4.png';
 import slide5 from './photos/dawg5.png';
 
 export default function CashAppDonation() {
-  const cashtag = 'KeefyDee';
+  const cashtag = 'helpinghandamerica';
   const carouselRef = useRef(null);
 
   useEffect(() => {
