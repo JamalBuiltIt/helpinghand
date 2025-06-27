@@ -9,7 +9,6 @@ import slide5 from './photos/dawg5.png';
 
 export default function CashAppDonation() {
   const cashtag = 'KeefyDee';
-
   const [amount, setAmount] = useState('');
 
   const handleDonateClick = () => {
@@ -17,34 +16,33 @@ export default function CashAppDonation() {
       alert('Please enter a valid donation amount');
       return;
     }
-    // Redirect to cash app with amount
-    window.open(`https://cash.app/$${cashtag}/${amount}`, '_blank', 'noopener,noreferrer');
+    const formattedAmount = parseFloat(amount).toFixed(2);
+    window.open(`https://cash.app/$${cashtag}?amount=${formattedAmount}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <>
       {/* Carousel */}
       <div className="carousel-container" style={{ position: 'relative' }}>
-  <div className="carousel" style={{ marginBottom: '2rem' }}>
-    <div className="carousel-slide">
-      <img src={slide1} alt="Slide 1" />
-    </div>
-    <div className="carousel-slide">
-      <img src={slide2} alt="Slide 2" />
-    </div>
-    <div className="carousel-slide">
-      <img src={slide3} alt="Slide 3" />
-    </div>
-    <div className="carousel-slide">
-      <img src={slide4} alt="Slide 4" />
-    </div>
-    <div className="carousel-slide">
-      <img src={slide5} alt="Slide 5" />
-    </div>
-  </div>
-
-  <div className="carousel-overlay" />
-</div>
+        <div className="carousel" style={{ marginBottom: '2rem' }}>
+          <div className="carousel-slide">
+            <img src={slide1} alt="Slide 1" />
+          </div>
+          <div className="carousel-slide">
+            <img src={slide2} alt="Slide 2" />
+          </div>
+          <div className="carousel-slide">
+            <img src={slide3} alt="Slide 3" />
+          </div>
+          <div className="carousel-slide">
+            <img src={slide4} alt="Slide 4" />
+          </div>
+          <div className="carousel-slide">
+            <img src={slide5} alt="Slide 5" />
+          </div>
+        </div>
+        <div className="carousel-overlay" />
+      </div>
 
       {/* Donation Form */}
       <div className="donateContainer" style={styles.container}>
