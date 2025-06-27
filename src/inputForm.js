@@ -13,13 +13,15 @@ export default function CashAppDonation() {
 
   useEffect(() => {
     let index = 0;
-    const slides = carouselRef.current.children;
+    const slides = carouselRef.current?.children;
+    if (!slides) return;
+
     const interval = setInterval(() => {
-      for (let slide of slides) {
-        slide.style.display = 'none';
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
       }
-      index = (index + 1) % slides.length;
       slides[index].style.display = 'block';
+      index = (index + 1) % slides.length;
     }, 3000);
 
     return () => clearInterval(interval);
@@ -28,13 +30,13 @@ export default function CashAppDonation() {
   return (
     <>
       {/* Carousel */}
-      <div className="carousel-container" style={{ position: 'relative' }}>
-        <div className="carousel" ref={carouselRef} style={{ marginBottom: '2rem' }}>
-          <div className="carousel-slide"><img src={slide1} alt="Animal Rescue Slide 1" /></div>
-          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide2} alt="Animal Rescue Slide 2" /></div>
-          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide3} alt="Animal Rescue Slide 3" /></div>
-          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide4} alt="Animal Rescue Slide 4" /></div>
-          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide5} alt="Animal Rescue Slide 5" /></div>
+      <div className="carousel-container">
+        <div className="carousel" ref={carouselRef}>
+          <div className="carousel-slide"><img src={slide1} alt="Slide 1" /></div>
+          <div className="carousel-slide"><img src={slide2} alt="Slide 2" /></div>
+          <div className="carousel-slide"><img src={slide3} alt="Slide 3" /></div>
+          <div className="carousel-slide"><img src={slide4} alt="Slide 4" /></div>
+          <div className="carousel-slide"><img src={slide5} alt="Slide 5" /></div>
         </div>
         <div className="carousel-overlay" />
       </div>
@@ -42,7 +44,7 @@ export default function CashAppDonation() {
       {/* Donation Section */}
       <div className="donateContainer" style={styles.container}>
         <h2 style={styles.title}>Donate Today!</h2>
-        <p style={styles.tagline}>Your support helps us rescue, feed, and shelter animals in need 🐾</p>
+        <p style={styles.tagline}>Your support helps rescue, feed, and shelter animals 🐾</p>
 
         <img
           src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://cash.app/$${cashtag}`}
@@ -59,7 +61,13 @@ export default function CashAppDonation() {
           Donate via Cash App
         </a>
 
-        <p style={styles.footer}>100% of donations go toward animal care and rescue 🐶❤️</p>
+        <ul style={styles.impactList}>
+          <li>🐶 $10 feeds a shelter dog for a week</li>
+          <li>🐾 $25 covers one full vet visit</li>
+          <li>🏠 $50 provides bedding & warmth for 3 rescues</li>
+        </ul>
+
+        <p style={styles.footer}>100% of your donation goes to animal care ❤️</p>
       </div>
     </>
   );
@@ -77,6 +85,11 @@ const styles = {
     fontFamily: 'Segoe UI, sans-serif',
     animation: 'fadeSlideIn 1.5s ease-in-out forwards',
     color: '#333',
+    zIndex: 2,
+    position: 'absolute',
+    top: '57.5%',
+    left: '50%',
+    transform: 'translate(-50%, -70%)',
   },
   title: {
     fontSize: '2rem',
@@ -115,5 +128,13 @@ const styles = {
     fontSize: '0.85rem',
     color: '#999',
     marginTop: '2rem',
+  },
+  impactList: {
+    textAlign: 'left',
+    marginTop: '1.5rem',
+    color: '#444',
+    fontSize: '0.95rem',
+    lineHeight: '1.6',
+    paddingLeft: '1.25rem',
   },
 };
