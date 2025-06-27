@@ -1,4 +1,5 @@
-import "./inputForm.css";
+import React, { useEffect, useRef } from 'react';
+import './inputForm.css';
 
 import slide1 from './photos/dawg1.png';
 import slide2 from './photos/dawg2.png';
@@ -8,34 +9,46 @@ import slide5 from './photos/dawg5.png';
 
 export default function CashAppDonation() {
   const cashtag = 'KeefyDee';
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    let index = 0;
+    const slides = carouselRef.current.children;
+    const interval = setInterval(() => {
+      for (let slide of slides) {
+        slide.style.display = 'none';
+      }
+      index = (index + 1) % slides.length;
+      slides[index].style.display = 'block';
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
       {/* Carousel */}
       <div className="carousel-container" style={{ position: 'relative' }}>
-        <div className="carousel" style={{ marginBottom: '2rem' }}>
-          <div className="carousel-slide">
-            <img src={slide1} alt="Slide 1" />
-          </div>
-          <div className="carousel-slide">
-            <img src={slide2} alt="Slide 2" />
-          </div>
-          <div className="carousel-slide">
-            <img src={slide3} alt="Slide 3" />
-          </div>
-          <div className="carousel-slide">
-            <img src={slide4} alt="Slide 4" />
-          </div>
-          <div className="carousel-slide">
-            <img src={slide5} alt="Slide 5" />
-          </div>
+        <div className="carousel" ref={carouselRef} style={{ marginBottom: '2rem' }}>
+          <div className="carousel-slide"><img src={slide1} alt="Animal Rescue Slide 1" /></div>
+          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide2} alt="Animal Rescue Slide 2" /></div>
+          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide3} alt="Animal Rescue Slide 3" /></div>
+          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide4} alt="Animal Rescue Slide 4" /></div>
+          <div className="carousel-slide" style={{ display: 'none' }}><img src={slide5} alt="Animal Rescue Slide 5" /></div>
         </div>
         <div className="carousel-overlay" />
       </div>
 
-      {/* Donation Form */}
+      {/* Donation Section */}
       <div className="donateContainer" style={styles.container}>
         <h2 style={styles.title}>Donate Today!</h2>
+        <p style={styles.tagline}>Your support helps us rescue, feed, and shelter animals in need 🐾</p>
+
+        <img
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://cash.app/$${cashtag}`}
+          alt="Cash App QR Code"
+          style={styles.qr}
+        />
 
         <a
           href={`https://cash.app/${cashtag}`}
@@ -43,10 +56,10 @@ export default function CashAppDonation() {
           rel="noopener noreferrer"
           style={styles.button}
         >
-          Click Here
+          Donate via Cash App
         </a>
 
-        
+        <p style={styles.footer}>100% of donations go toward animal care and rescue 🐶❤️</p>
       </div>
     </>
   );
@@ -68,18 +81,18 @@ const styles = {
   title: {
     fontSize: '2rem',
     color: '#ff7f50',
-    marginBottom: '1rem',
+    marginBottom: '0.5rem',
     textShadow: '0 0 1px rgba(0, 0, 0, 1.0)',
   },
-  cashtag: {
-    fontSize: '1.25rem',
-    color: '#555',
-    marginBottom: '1rem',
+  tagline: {
+    fontSize: '1rem',
+    color: '#666',
+    marginBottom: '1.5rem',
   },
   qr: {
-    width: '220px',
-    height: '220px',
-    marginBottom: '1rem',
+    width: '200px',
+    height: '200px',
+    marginBottom: '1.5rem',
     borderRadius: '12px',
     boxShadow: '0 0 20px rgba(255,127,80,0.3)',
   },
@@ -96,15 +109,11 @@ const styles = {
     cursor: 'pointer',
     transition: 'all 0.3s ease-in-out',
     marginTop: '0.75rem',
+    animation: 'pulse 2s infinite',
   },
-  input: {
-    width: '100%',
-    padding: '0.9rem',
-    fontSize: '1rem',
-    borderRadius: '8px',
-    border: '1px solid #ccc',
-    marginTop: '0.5rem',
-    marginBottom: '1.5rem',
-    boxSizing: 'border-box',
+  footer: {
+    fontSize: '0.85rem',
+    color: '#999',
+    marginTop: '2rem',
   },
 };
