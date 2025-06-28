@@ -87,7 +87,7 @@ const styles = {
     color: '#333',
     zIndex: 2,
     position: 'absolute',
-    top: '57.5%',
+    top: '57vh',
     left: '50%',
     transform: 'translate(-50%, -70%)',
   },
